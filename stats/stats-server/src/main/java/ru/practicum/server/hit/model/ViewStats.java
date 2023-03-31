@@ -1,8 +1,7 @@
-package ru.practicum.stats.dto;
+package ru.practicum.server.hit.model;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 
 /**
@@ -10,11 +9,10 @@ import lombok.Getter;
  */
 
 @Getter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ViewStatsDto {
-    private String app;
+public class ViewStats {
     private String uri;
+    private String app;
     private Long hits;
 }

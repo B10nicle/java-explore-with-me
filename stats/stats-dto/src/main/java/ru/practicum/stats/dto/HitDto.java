@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 /**
  * @author Oleg Khilko
  */
@@ -13,8 +15,10 @@ import lombok.Getter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ViewStatsDto {
+public class HitDto {
+    private Long id;
+    private String ip;
     private String app;
     private String uri;
-    private Long hits;
+    private LocalDateTime timestamp;
 }

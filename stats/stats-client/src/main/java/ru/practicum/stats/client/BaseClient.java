@@ -8,6 +8,10 @@ import org.springframework.http.*;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Oleg Khilko
+ */
+
 public class BaseClient {
     protected final RestTemplate rest;
 
@@ -26,7 +30,6 @@ public class BaseClient {
     protected <T> ResponseEntity<Object> post(String path, @Nullable Map<String, Object> parameters, T body) {
         return makeAndSendRequest(HttpMethod.POST, path, parameters, body);
     }
-
 
     private <T> ResponseEntity<Object> makeAndSendRequest(HttpMethod method, String path, @Nullable Map<String, Object> parameters, @Nullable T body) {
         HttpEntity<T> requestEntity = new HttpEntity<>(body, defaultHeaders());
@@ -61,7 +64,6 @@ public class BaseClient {
         if (response.hasBody()) {
             return responseBuilder.body(response.getBody());
         }
-
         return responseBuilder.build();
     }
 }

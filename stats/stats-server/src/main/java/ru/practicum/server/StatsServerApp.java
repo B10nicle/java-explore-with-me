@@ -1,7 +1,11 @@
-package ru.practicum.stats.server;
+package ru.practicum.server;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.SpringApplication;
+
+/**
+ * @author Oleg Khilko
+ */
 
 @SpringBootApplication
 public class StatsServerApp {

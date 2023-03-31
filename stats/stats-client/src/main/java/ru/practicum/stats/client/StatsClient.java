@@ -5,18 +5,21 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import ru.practicum.stats.dto.EndpointHitDto;
+import ru.practicum.stats.dto.HitDto;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+
+/**
+ * @author Oleg Khilko
+ */
 
 @Service
 public class StatsClient extends BaseClient {
@@ -31,15 +34,15 @@ public class StatsClient extends BaseClient {
     }
 
     @PostMapping()
-    public ResponseEntity<Object> createEndpointHit(@RequestBody EndpointHitDto endpointHitDto) {
-        return post("/hit", endpointHitDto);
+    public ResponseEntity<Object> createHit(@RequestBody HitDto hitDto) {
+        return post("/hit", hitDto);
     }
 
     @GetMapping()
-    public ResponseEntity<Object> getEndpointHits(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime start,
-                                                  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime end,
-                                                  @RequestParam(defaultValue = "false") boolean unique,
-                                                  @RequestParam(required = false) List<String> uris) {
+    public ResponseEntity<Object> getStats(@RequestParam(value = "start") LocalDateTime start,
+                                           @RequestParam(value = "end") LocalDateTime end,
+                                           @RequestParam(required = false, defaultValue = "false") boolean unique,
+                                           @RequestParam(required = false) List<String> uris) {
         Map<String, Object> parameters = Map.of(
                 "start", start,
                 "end", end,
@@ -48,6 +51,4 @@ public class StatsClient extends BaseClient {
         );
         return get("/stats/?start={start}&end={end}&uris={uris}&unique={unique}", parameters);
     }
-
-
 }

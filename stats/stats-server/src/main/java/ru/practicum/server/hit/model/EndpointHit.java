@@ -1,5 +1,6 @@
-package ru.practicum.stats.server.hit.model;
+package ru.practicum.server.hit.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.hibernate.Hibernate;
 import lombok.*;
 
@@ -9,6 +10,10 @@ import java.util.Objects;
 
 import static javax.persistence.GenerationType.*;
 
+/**
+ * @author Oleg Khilko
+ */
+
 @Entity
 @Getter
 @Setter
@@ -16,7 +21,7 @@ import static javax.persistence.GenerationType.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "endpoint_hits", schema = "public")
+@Table(name = "hits", schema = "public")
 public class EndpointHit {
 
     @Id
@@ -32,6 +37,7 @@ public class EndpointHit {
     @Column(name = "ip", length = 50, nullable = false)
     private String ip;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp;
 
