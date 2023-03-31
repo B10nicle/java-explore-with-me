@@ -1,14 +1,14 @@
-package ru.practicum.server.hit.model;
+package ru.practicum.server.hit.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Getter;
+import lombok.*;
 
 /**
  * @author Oleg Khilko
  */
 
+@Setter
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ViewStats {

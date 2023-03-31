@@ -2,8 +2,8 @@ package ru.practicum.server.hit.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import ru.practicum.server.hit.model.EndpointHit;
-import ru.practicum.server.hit.model.ViewStats;
+import ru.practicum.server.hit.entity.ViewStats;
+import ru.practicum.server.hit.entity.Hit;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,10 +12,10 @@ import java.util.List;
  * @author Oleg Khilko
  */
 
-public interface HitRepository extends JpaRepository<EndpointHit, Integer> {
+public interface HitRepository extends JpaRepository<Hit, Integer> {
     @Query(value = ""
-            + "SELECT NEW ru.practicum.server.hit.model.ViewStats(hit.uri, hit.app, COUNT(hit.ip)) "
-            + "FROM EndpointHit hit "
+            + "SELECT NEW ru.practicum.server.hit.entity.ViewStats(hit.uri, hit.app, COUNT(hit.ip)) "
+            + "FROM Hit hit "
             + "WHERE hit.uri IN ?3 AND hit.timestamp BETWEEN ?1 AND ?2 "
             + "GROUP BY hit.uri, hit.app "
             + "ORDER BY COUNT(hit.ip) DESC")
@@ -24,8 +24,8 @@ public interface HitRepository extends JpaRepository<EndpointHit, Integer> {
                             List<String> uris);
 
     @Query(value = ""
-            + "SELECT NEW ru.practicum.server.hit.model.ViewStats(hit.uri, hit.app, COUNT(DISTINCT hit.ip)) "
-            + "FROM EndpointHit hit "
+            + "SELECT NEW ru.practicum.server.hit.entity.ViewStats(hit.uri, hit.app, COUNT(DISTINCT hit.ip)) "
+            + "FROM Hit hit "
             + "WHERE hit.uri IN ?3 AND hit.timestamp BETWEEN ?1 AND ?2 "
             + "GROUP BY hit.uri, hit.app "
             + "ORDER BY COUNT(DISTINCT hit.ip) DESC")

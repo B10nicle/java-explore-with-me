@@ -28,7 +28,7 @@ public class HitServiceImpl implements HitService {
 
     @Override
     @Transactional
-    public void createHit(HitDto hitDto) {
+    public void saveHit(HitDto hitDto) {
         log.debug("App saved hit: " + hitDto.getApp());
         hitRepository.save(hitMapper.toEntity(hitDto));
     }

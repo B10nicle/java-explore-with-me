@@ -1,4 +1,4 @@
-package ru.practicum.server.hit.model;
+package ru.practicum.server.hit.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.hibernate.Hibernate;
@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import javax.persistence.*;
 import java.util.Objects;
 
+import static ru.practicum.server.hit.utils.Patterns.*;
 import static javax.persistence.GenerationType.*;
 
 /**
@@ -22,8 +23,7 @@ import static javax.persistence.GenerationType.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "hits", schema = "public")
-public class EndpointHit {
-
+public class Hit {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
@@ -37,7 +37,7 @@ public class EndpointHit {
     @Column(name = "ip", length = 50, nullable = false)
     private String ip;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = DATE_PATTERN)
     @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp;
 
@@ -45,7 +45,7 @@ public class EndpointHit {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        EndpointHit that = (EndpointHit) o;
+        Hit that = (Hit) o;
         return getId() != null && Objects.equals(getId(), that.getId());
     }
 

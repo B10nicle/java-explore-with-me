@@ -11,10 +11,10 @@ import java.util.List;
  */
 
 public interface HitService {
+    void saveHit(HitDto hitDto);
+
     List<ViewStatsDto> getHits(LocalDateTime start,
                                LocalDateTime end,
                                List<String> uris,
                                boolean unique);
-
-    void createHit(HitDto hitDto);
 }

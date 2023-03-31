@@ -1,6 +1,6 @@
 package ru.practicum.server.hit.mapper;
 
-import ru.practicum.server.hit.model.ViewStats;
+import ru.practicum.server.hit.entity.ViewStats;
 import ru.practicum.stats.dto.ViewStatsDto;
 import org.mapstruct.Mapper;
 

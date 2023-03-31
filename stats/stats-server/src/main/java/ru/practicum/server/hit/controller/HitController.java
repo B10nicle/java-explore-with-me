@@ -22,14 +22,14 @@ public class HitController {
 
     @PostMapping("/hit")
     @ResponseStatus(CREATED)
-    public void createHit(@RequestBody HitDto hitDto) {
-        hitService.createHit(hitDto);
+    public void saveHit(@RequestBody HitDto hitDto) {
+        hitService.saveHit(hitDto);
     }
 
     @GetMapping("/stats")
     public List<ViewStatsDto> getStats(@RequestParam(value = "start") LocalDateTime start,
                                        @RequestParam(value = "end") LocalDateTime end,
-                                       @RequestParam(required = false, defaultValue = "false") boolean unique,
+                                       @RequestParam(required = false) boolean unique,
                                        @RequestParam(required = false) List<String> uris) {
         return hitService.getHits(start, end, uris, unique);
     }
