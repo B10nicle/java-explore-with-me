@@ -1,4 +1,4 @@
-package ru.practicum.main.user.entity;
+package ru.practicum.main.category.entity;
 
 import org.hibernate.Hibernate;
 import lombok.*;
@@ -20,8 +20,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users", schema = "public")
-public class User {
+@Table(name = "categories", schema = "public")
+public class Category {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
@@ -29,15 +29,12 @@ public class User {
     @Column(name = "name", length = 140, nullable = false)
     private String name;
 
-    @Column(name = "email", length = 140, nullable = false, unique = true)
-    private String email;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        var user = (User) o;
-        return getId() != null && Objects.equals(getId(), user.getId());
+        var category = (Category) o;
+        return getId() != null && Objects.equals(getId(), category.getId());
     }
 
     @Override

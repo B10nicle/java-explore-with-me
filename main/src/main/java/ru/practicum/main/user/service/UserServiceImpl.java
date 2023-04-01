@@ -1,7 +1,7 @@
 package ru.practicum.main.user.service;
 
-import ru.practicum.main.user.exception.NameAlreadyExistException;
 import ru.practicum.main.user.repository.UserRepository;
+import ru.practicum.main.exception.NameExistException;
 import ru.practicum.main.user.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 import ru.practicum.main.user.dto.UserDto;
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto saveUser(UserDto userDto) {
         if (userRepository.existsByName(userDto.getName()))
-            throw new NameAlreadyExistException("User with name " + userDto.getName() + " cannot be saved");
+            throw new NameExistException("User with name " + userDto.getName() + " cannot be saved");
         log.debug("User " + userDto.getName() + " was saved");
         var user = userMapper.toUser(userDto);
         var saved = userRepository.save(user);

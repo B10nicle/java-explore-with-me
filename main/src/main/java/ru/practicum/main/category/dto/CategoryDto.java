@@ -1,6 +1,8 @@
-package ru.practicum.main.user.dto;
+package ru.practicum.main.category.dto;
 
 import lombok.*;
+
+import javax.validation.constraints.NotBlank;
 
 /**
  * @author Oleg Khilko
@@ -11,7 +13,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserShortDto {
+public class CategoryDto {
     private Long id;
+    @NotBlank
     private String name;
 }
