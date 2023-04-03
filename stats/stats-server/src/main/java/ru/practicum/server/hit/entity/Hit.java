@@ -28,17 +28,12 @@ public class Hit {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    @Column(name = "uri", length = 140, nullable = false)
     private String uri;
-
-    @Column(name = "app", length = 140, nullable = false)
     private String app;
-
-    @Column(name = "ip", length = 50, nullable = false)
     private String ip;
 
     @DateTimeFormat(pattern = DATE_PATTERN)
-    @Column(name = "timestamp", nullable = false)
+    @Column(name = "timestamp")
     private LocalDateTime timestamp;
 
     @Override
@@ -54,4 +49,3 @@ public class Hit {
         return getClass().hashCode();
     }
 }
-

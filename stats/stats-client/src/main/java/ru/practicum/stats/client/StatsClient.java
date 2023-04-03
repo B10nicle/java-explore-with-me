@@ -1,54 +1,65 @@
 package ru.practicum.stats.client;
 
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.util.DefaultUriBuilderFactory;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.web.client.RestTemplate;
+import ru.practicum.stats.exception.JsonException;
 import org.springframework.stereotype.Service;
+import ru.practicum.stats.dto.ViewStatsDto;
 import ru.practicum.stats.dto.HitDto;
+import org.springframework.http.*;
 
-import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import static org.springframework.http.HttpMethod.*;
+import static org.springframework.http.MediaType.*;
+import static java.util.Arrays.*;
 
 /**
  * @author Oleg Khilko
  */
 
 @Service
-public class StatsClient extends BaseClient {
+public class StatsClient {
+    private final RestTemplate restTemplate;
+    private final String serverUrl;
 
-    @Autowired
-    public StatsClient(@Value("${stats-server.url}") String serverUrl, RestTemplateBuilder builder) {
-        super(builder
-                .uriTemplateHandler(new DefaultUriBuilderFactory(serverUrl))
-                .requestFactory(HttpComponentsClientHttpRequestFactory::new)
-                .build()
-        );
+    public StatsClient(@Value("${stats-server.url}") String serverUrl,
+                       RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+        this.serverUrl = serverUrl;
     }
 
-    @PostMapping()
-    public ResponseEntity<Object> createHit(@RequestBody HitDto hitDto) {
-        return post("/hit", hitDto);
+    public List<ViewStatsDto> getStats(String start,
+                                       String end,
+                                       List<String> uris,
+                                       Boolean unique) {
+        var parameters = new HashMap<>();
+        parameters.put("start", start);
+        parameters.put("end", end);
+        parameters.put("uris", uris);
+        parameters.put("unique", unique);
+        var response = restTemplate.getForEntity(
+                serverUrl + "/stats?start={start}&end={end}&uris={uris}&unique={unique}",
+                String.class,
+                parameters);
+        try {
+            return asList(new ObjectMapper().readValue(response.getBody(), ViewStatsDto[].class));
+        } catch (JsonProcessingException exception) {
+            throw new JsonException("JSON error: " + exception.getMessage());
+        }
     }
 
-    @GetMapping()
-    public ResponseEntity<Object> getStats(@RequestParam(value = "start") LocalDateTime start,
-                                           @RequestParam(value = "end") LocalDateTime end,
-                                           @RequestParam(required = false, defaultValue = "false") boolean unique,
-                                           @RequestParam(required = false) List<String> uris) {
-        Map<String, Object> parameters = Map.of(
-                "start", start,
-                "end", end,
-                "uris", uris,
-                "unique", unique
-        );
-        return get("/stats/?start={start}&end={end}&uris={uris}&unique={unique}", parameters);
+    public void addStats(HitDto hitDto) {
+        var headers = new HttpHeaders();
+        headers.setContentType(APPLICATION_JSON);
+        var request = new HttpEntity<>(hitDto, headers);
+        restTemplate.exchange(
+                serverUrl + "/hit",
+                POST,
+                request,
+                HitDto.class);
     }
 }

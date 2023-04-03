@@ -22,14 +22,15 @@ import static javax.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @Table(name = "users", schema = "public")
 public class User {
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 140, nullable = false)
+    @Column(name = "name", length = 140)
     private String name;
 
-    @Column(name = "email", length = 140, nullable = false, unique = true)
+    @Column(name = "email", length = 140, unique = true)
     private String email;
 
     @Override

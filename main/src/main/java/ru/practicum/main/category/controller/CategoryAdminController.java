@@ -22,8 +22,8 @@ import static org.springframework.http.HttpStatus.*;
 public class CategoryAdminController {
     private final CategoryService categoryService;
 
-    @PostMapping("/categories")
     @ResponseStatus(CREATED)
+    @PostMapping("/categories")
     public CategoryDto saveCategory(@Valid @RequestBody SavedCategoryDto savedCategoryDto) {
         return categoryService.saveCategory(savedCategoryDto);
     }
@@ -34,8 +34,8 @@ public class CategoryAdminController {
         return categoryService.updateCategory(catId, categoryDto);
     }
 
-    @DeleteMapping("/categories/{catId}")
     @ResponseStatus(NO_CONTENT)
+    @DeleteMapping("/categories/{catId}")
     public void deleteCategory(@PathVariable Long catId) {
         categoryService.deleteCategory(catId);
     }

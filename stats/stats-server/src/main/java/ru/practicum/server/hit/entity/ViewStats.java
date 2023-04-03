@@ -14,5 +14,5 @@ import lombok.*;
 public class ViewStats {
     private String uri;
     private String app;
-    private Long hits;
+    private long hits;
 }

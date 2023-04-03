@@ -18,25 +18,25 @@ import static org.springframework.http.HttpStatus.*;
 @Validated
 @RestController
 @AllArgsConstructor
-@RequestMapping(path = "/admin")
+@RequestMapping("/admin")
 public class UserAdminController {
     private final UserService userService;
 
-    @PostMapping("/users")
     @ResponseStatus(CREATED)
+    @PostMapping("/users")
     public UserDto saveUser(@Valid @RequestBody UserDto userDto) {
         return userService.saveUser(userDto);
     }
 
     @GetMapping("/users")
     public List<UserDto> getUsers(@RequestParam(required = false) List<Long> ids,
-                                  @RequestParam(defaultValue = "10") int size,
-                                  @RequestParam(defaultValue = "0") int from) {
+                                  @RequestParam(defaultValue = "10") Integer size,
+                                  @RequestParam(defaultValue = "0") Integer from) {
         return userService.getUsers(ids, from, size);
     }
 
-    @DeleteMapping("/users/{id}")
     @ResponseStatus(NO_CONTENT)
+    @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }

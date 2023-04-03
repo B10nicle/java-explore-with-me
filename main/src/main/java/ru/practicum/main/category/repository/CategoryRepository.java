@@ -8,5 +8,5 @@ import ru.practicum.main.category.entity.Category;
  */
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-    boolean existsByName(String name);
+    Boolean existsByName(String name);
 }

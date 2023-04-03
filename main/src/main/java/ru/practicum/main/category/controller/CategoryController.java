@@ -14,12 +14,12 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/categories")
-public class CategoryPublicController {
+public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping
-    public List<CategoryDto> getCategories(@RequestParam(defaultValue = "0", required = false) int from,
-                                           @RequestParam(defaultValue = "10", required = false) int size) {
+    public List<CategoryDto> getCategories(@RequestParam(defaultValue = "10", required = false) int size,
+                                           @RequestParam(defaultValue = "0", required = false) int from) {
         return categoryService.getCategories(from, size);
     }
 

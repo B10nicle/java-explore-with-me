@@ -22,6 +22,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @Table(name = "categories", schema = "public")
 public class Category {
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;

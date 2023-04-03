@@ -1,7 +1,7 @@
 package ru.practicum.main.user.service;
 
+import ru.practicum.main.user.exception.NameExistException;
 import ru.practicum.main.user.repository.UserRepository;
-import ru.practicum.main.exception.NameExistException;
 import ru.practicum.main.user.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 import ru.practicum.main.user.dto.UserDto;
@@ -27,15 +27,15 @@ public class UserServiceImpl implements UserService {
     public UserDto saveUser(UserDto userDto) {
         if (userRepository.existsByName(userDto.getName()))
             throw new NameExistException("User with name " + userDto.getName() + " cannot be saved");
-        log.debug("User " + userDto.getName() + " was saved");
         var user = userMapper.toUser(userDto);
         var saved = userRepository.save(user);
         return userMapper.toUserDto(saved);
     }
 
     @Override
-    public List<UserDto> getUsers(List<Long> ids, int from, int size) {
-        log.debug("List of users' ids was received");
+    public List<UserDto> getUsers(List<Long> ids,
+                                  Integer from,
+                                  Integer size) {
         return ids.isEmpty()
                 ? userMapper.toUserDtos(userRepository.findAll(of(from / size, size)).toList())
                 : userMapper.toUserDtos(userRepository.findAllById(ids));
@@ -43,7 +43,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(Long id) {
-        log.debug("User#" + id + " was deleted");
         userRepository.deleteById(id);
     }
 }

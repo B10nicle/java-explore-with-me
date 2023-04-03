@@ -11,7 +11,9 @@ import java.util.List;
 public interface UserService {
     UserDto saveUser(UserDto userDto);
 
-    List<UserDto> getUsers(List<Long> ids, int from, int size);
+    List<UserDto> getUsers(List<Long> ids,
+                           Integer from,
+                           Integer size);
 
     void deleteUser(Long id);
 }

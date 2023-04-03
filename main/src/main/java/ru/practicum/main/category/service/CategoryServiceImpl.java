@@ -1,10 +1,12 @@
 package ru.practicum.main.category.service;
 
 import ru.practicum.main.category.repository.CategoryRepository;
-import ru.practicum.main.exception.CategoryNotExistException;
+import ru.practicum.main.category.exception.CategoryNotEmptyException;
+import ru.practicum.main.category.exception.CategoryNotExistException;
+import ru.practicum.main.event.repository.EventRepository;
 import ru.practicum.main.category.mapper.CategoryMapper;
 import ru.practicum.main.category.dto.SavedCategoryDto;
-import ru.practicum.main.exception.NameExistException;
+import ru.practicum.main.user.exception.NameExistException;
 import ru.practicum.main.category.dto.CategoryDto;
 import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
@@ -23,6 +25,7 @@ import static org.springframework.data.domain.PageRequest.*;
 @AllArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
+    private final EventRepository eventRepository;
     private final CategoryMapper categoryMapper;
 
     @Override
@@ -49,6 +52,8 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void deleteCategory(Long id) {
+        if (eventRepository.existsByCategoryId(id))
+            throw new CategoryNotEmptyException("Category#" + id + " is not empty");
         log.debug("Category#" + id + " was deleted");
         categoryRepository.deleteById(id);
     }

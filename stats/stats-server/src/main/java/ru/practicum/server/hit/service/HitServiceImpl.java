@@ -29,7 +29,6 @@ public class HitServiceImpl implements HitService {
     @Override
     @Transactional
     public void saveHit(HitDto hitDto) {
-        log.debug("App saved hit: " + hitDto.getApp());
         hitRepository.save(hitMapper.toEntity(hitDto));
     }
 
@@ -38,7 +37,6 @@ public class HitServiceImpl implements HitService {
                                       LocalDateTime end,
                                       List<String> uris,
                                       boolean unique) {
-        log.debug("Hits were successfully received");
         return unique
                 ? viewStatsMapper.toEntities(hitRepository.getDistinctHits(start, end, uris))
                 : viewStatsMapper.toEntities(hitRepository.getHits(start, end, uris));

@@ -12,7 +12,7 @@ import java.util.List;
  * @author Oleg Khilko
  */
 
-public interface HitRepository extends JpaRepository<Hit, Integer> {
+public interface HitRepository extends JpaRepository<Hit, Long> {
     @Query(value = ""
             + "SELECT NEW ru.practicum.server.hit.entity.ViewStats(hit.uri, hit.app, COUNT(hit.ip)) "
             + "FROM Hit hit "

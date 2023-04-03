@@ -1,17 +1,13 @@
 package ru.practicum.stats.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-
-import java.time.LocalDateTime;
+import lombok.*;
 
 /**
  * @author Oleg Khilko
  */
 
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,5 +16,5 @@ public class HitDto {
     private String ip;
     private String app;
     private String uri;
-    private LocalDateTime timestamp;
+    private String timestamp;
 }

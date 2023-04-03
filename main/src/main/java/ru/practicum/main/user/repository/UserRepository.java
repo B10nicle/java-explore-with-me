@@ -8,5 +8,5 @@ import ru.practicum.main.user.entity.User;
  */
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    boolean existsByName(String name);
+    Boolean existsByName(String name);
 }
