@@ -2,8 +2,8 @@ package ru.practicum.compilation.controller;
 
 import ru.practicum.compilation.dto.CompilationUpdateRequest;
 import ru.practicum.compilation.service.CompilationService;
-import ru.practicum.compilation.dto.SavedCompilationDto;
 import org.springframework.validation.annotation.Validated;
+import ru.practicum.compilation.dto.SavedCompilationDto;
 import ru.practicum.compilation.dto.CompilationDto;
 import org.springframework.web.bind.annotation.*;
 import lombok.AllArgsConstructor;

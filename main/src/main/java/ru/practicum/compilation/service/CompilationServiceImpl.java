@@ -1,15 +1,15 @@
 package ru.practicum.compilation.service;
 
 import ru.practicum.compilation.exception.CompilationNotExistException;
-import ru.practicum.event.repository.EventRepository;
-import ru.practicum.event.service.EventService;
 import ru.practicum.compilation.repository.CompilationRepository;
-import ru.practicum.compilation.dto.CompilationUpdateRequest;
 import org.springframework.transaction.annotation.Transactional;
+import ru.practicum.compilation.dto.CompilationUpdateRequest;
 import ru.practicum.compilation.mapper.CompilationMapper;
 import ru.practicum.compilation.dto.SavedCompilationDto;
+import ru.practicum.event.repository.EventRepository;
 import ru.practicum.compilation.dto.CompilationDto;
 import ru.practicum.compilation.entity.Compilation;
+import ru.practicum.event.service.EventService;
 import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

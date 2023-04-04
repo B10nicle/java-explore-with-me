@@ -1,8 +1,8 @@
 package ru.practicum.user.controller;
 
 import org.springframework.validation.annotation.Validated;
-import ru.practicum.user.service.UserService;
 import org.springframework.web.bind.annotation.*;
+import ru.practicum.user.service.UserService;
 import ru.practicum.user.dto.UserDto;
 import lombok.AllArgsConstructor;
 

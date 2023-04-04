@@ -2,8 +2,8 @@ package ru.practicum.event.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import ru.practicum.event.entity.Location;
-import lombok.*;
 import ru.practicum.utils.Patterns;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

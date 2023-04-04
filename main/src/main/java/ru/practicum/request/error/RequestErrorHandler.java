@@ -1,12 +1,12 @@
 package ru.practicum.request.error;
 
 import ru.practicum.request.exception.RequestParticipantLimitException;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.practicum.request.exception.RequestConfirmedException;
 import ru.practicum.request.exception.RequestNotExistException;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
-import ru.practicum.request.exception.RequestExistException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import ru.practicum.request.exception.RequestExistException;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ru.practicum.error.entity.Error;
 import ru.practicum.utils.Patterns;

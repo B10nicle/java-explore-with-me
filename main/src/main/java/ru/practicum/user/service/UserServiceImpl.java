@@ -1,9 +1,10 @@
 package ru.practicum.user.service;
 
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.user.exception.NameExistException;
 import ru.practicum.user.repository.UserRepository;
-import ru.practicum.user.mapper.UserMapper;
 import org.springframework.stereotype.Service;
+import ru.practicum.user.mapper.UserMapper;
 import ru.practicum.user.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,11 +20,13 @@ import static org.springframework.data.domain.PageRequest.*;
 @Slf4j
 @Service
 @AllArgsConstructor
+@Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
     @Override
+    @Transactional
     public UserDto saveUser(UserDto userDto) {
         if (userRepository.existsByName(userDto.getName()))
             throw new NameExistException("User with name " + userDto.getName() + " cannot be saved");
@@ -42,6 +45,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }

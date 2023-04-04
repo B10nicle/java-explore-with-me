@@ -1,8 +1,8 @@
 package ru.practicum.category.controller;
 
-import ru.practicum.category.dto.CategoryDto;
 import ru.practicum.category.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
+import ru.practicum.category.dto.CategoryDto;
 import lombok.AllArgsConstructor;
 
 import java.util.List;

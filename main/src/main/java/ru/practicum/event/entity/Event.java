@@ -3,17 +3,17 @@ package ru.practicum.event.entity;
 import ru.practicum.category.entity.Category;
 import ru.practicum.event.enums.EventState;
 import ru.practicum.user.entity.User;
+import ru.practicum.utils.Patterns;
 import org.hibernate.Hibernate;
 import lombok.*;
-import ru.practicum.utils.Patterns;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import javax.persistence.*;
 import java.util.Objects;
 
-import static ru.practicum.event.enums.EventState.*;
 import static javax.persistence.GenerationType.IDENTITY;
+import static ru.practicum.event.enums.EventState.*;
 import static java.time.format.DateTimeFormatter.*;
 import static javax.persistence.CascadeType.*;
 import static javax.persistence.EnumType.*;

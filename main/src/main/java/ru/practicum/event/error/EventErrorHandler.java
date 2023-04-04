@@ -4,8 +4,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.ResponseBody;
-import ru.practicum.event.exception.*;
 import ru.practicum.error.entity.Error;
+import ru.practicum.event.exception.*;
 import ru.practicum.utils.Patterns;
 
 import static java.time.format.DateTimeFormatter.ofPattern;

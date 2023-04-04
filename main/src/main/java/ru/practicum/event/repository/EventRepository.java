@@ -2,8 +2,8 @@ package ru.practicum.event.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.domain.Pageable;
-import ru.practicum.event.entity.Event;
 import org.springframework.data.domain.Page;
+import ru.practicum.event.entity.Event;
 
 import java.util.Optional;
 import java.util.List;

@@ -1,9 +1,9 @@
 package ru.practicum.event.controller;
 
 import org.springframework.validation.annotation.Validated;
-import ru.practicum.event.service.EventService;
 import ru.practicum.event.dto.UpdateEventAdminDto;
 import org.springframework.web.bind.annotation.*;
+import ru.practicum.event.service.EventService;
 import ru.practicum.event.dto.LongEventDto;
 import ru.practicum.event.enums.EventState;
 import lombok.AllArgsConstructor;

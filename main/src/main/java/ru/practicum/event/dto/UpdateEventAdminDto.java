@@ -1,10 +1,10 @@
 package ru.practicum.event.dto;
 
-import ru.practicum.event.entity.Location;
 import ru.practicum.event.enums.StateActionForAdmin;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
+import ru.practicum.event.entity.Location;
 import ru.practicum.utils.Patterns;
+import lombok.*;
 
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;

@@ -56,6 +56,4 @@ public class ErrorHandler {
                 .timestamp(now().format(ofPattern(Patterns.DATE_PATTERN)))
                 .build();
     }
-
-
 }

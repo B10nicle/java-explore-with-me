@@ -3,8 +3,8 @@ package ru.practicum.category.controller;
 import org.springframework.validation.annotation.Validated;
 import ru.practicum.category.service.CategoryService;
 import ru.practicum.category.dto.SavedCategoryDto;
-import ru.practicum.category.dto.CategoryDto;
 import org.springframework.web.bind.annotation.*;
+import ru.practicum.category.dto.CategoryDto;
 import lombok.AllArgsConstructor;
 
 import javax.validation.Valid;

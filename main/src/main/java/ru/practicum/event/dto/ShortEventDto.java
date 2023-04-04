@@ -3,8 +3,8 @@ package ru.practicum.event.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import ru.practicum.category.dto.CategoryDto;
 import ru.practicum.user.dto.ShortUserDto;
-import lombok.*;
 import ru.practicum.utils.Patterns;
+import lombok.*;
 
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;

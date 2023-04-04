@@ -3,11 +3,11 @@ package ru.practicum.user.error;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import ru.practicum.error.entity.Error;
-import ru.practicum.user.exception.UserNotExistException;
 import org.springframework.web.bind.annotation.ResponseBody;
+import ru.practicum.user.exception.UserNotExistException;
 import ru.practicum.user.exception.NameExistException;
 import ru.practicum.user.exception.WrongUserException;
+import ru.practicum.error.entity.Error;
 import ru.practicum.utils.Patterns;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
