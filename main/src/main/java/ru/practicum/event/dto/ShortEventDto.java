@@ -3,13 +3,13 @@ package ru.practicum.event.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import ru.practicum.category.dto.CategoryDto;
 import ru.practicum.user.dto.ShortUserDto;
-import ru.practicum.utils.Patterns;
 import lombok.*;
 
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 import static com.fasterxml.jackson.annotation.JsonFormat.Shape.*;
+import static ru.practicum.utils.Patterns.*;
 
 /**
  * @author Oleg Khilko
@@ -24,7 +24,7 @@ import static com.fasterxml.jackson.annotation.JsonFormat.Shape.*;
 public class ShortEventDto {
     private Long id;
 
-    @JsonFormat(shape = STRING, pattern = Patterns.DATE_PATTERN)
+    @JsonFormat(shape = STRING, pattern = DATE_PATTERN)
     private LocalDateTime eventDate;
 
     private ShortUserDto initiator;

@@ -1,10 +1,8 @@
 package ru.practicum.hit.mapper;
 
-import ru.practicum.hit.entity.ViewStats;
 import ru.practicum.stats.dto.ViewStatsDto;
+import ru.practicum.hit.entity.ViewStats;
 import org.mapstruct.Mapper;
-
-import java.util.List;
 
 /**
  * @author Oleg Khilko
@@ -12,5 +10,5 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface ViewStatsMapper {
-    List<ViewStatsDto> toEntities(List<ViewStats> viewStats);
+    ViewStatsDto toDto(ViewStats viewStats);
 }

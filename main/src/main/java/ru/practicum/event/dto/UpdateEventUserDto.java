@@ -3,13 +3,13 @@ package ru.practicum.event.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import ru.practicum.event.enums.StateActionForUser;
 import ru.practicum.event.entity.Location;
-import ru.practicum.utils.Patterns;
 import lombok.*;
 
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 import static com.fasterxml.jackson.annotation.JsonFormat.Shape.*;
+import static ru.practicum.utils.Patterns.*;
 
 @Getter
 @Setter
@@ -27,7 +27,7 @@ public class UpdateEventUserDto {
     @Size(min = 20, max = 7000)
     private String description;
 
-    @JsonFormat(shape = STRING, pattern = Patterns.DATE_PATTERN)
+    @JsonFormat(shape = STRING, pattern = DATE_PATTERN)
     private LocalDateTime eventDate;
 
     private Location location;

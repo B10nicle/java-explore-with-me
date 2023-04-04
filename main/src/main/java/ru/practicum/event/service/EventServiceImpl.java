@@ -217,27 +217,6 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public void addView(List<Event> events) {
-        var start = events.get(0).getCreatedOn();
-        var startTime = start.format(ofPattern(DATE_PATTERN));
-        var endTime = now().format(ofPattern(DATE_PATTERN));
-        Map<String, Event> eventsUri = new HashMap<>();
-        List<String> uris = new ArrayList<>();
-        String uri;
-
-        for (var event : events) {
-            if (start.isBefore(event.getCreatedOn()))
-                start = event.getCreatedOn();
-            uri = "/events/" + event.getId();
-            uris.add(uri);
-            eventsUri.put(uri, event);
-            event.setViews(0L);
-        }
-        var stats = getStats(startTime, endTime, uris);
-        stats.forEach((stat) -> eventsUri.get(stat.getUri()).setViews(stat.getHits()));
-    }
-
-    @Override
     public List<LongEventDto> getEventsWithParamsByAdmin(List<Long> users,
                                                          EventState states,
                                                          List<Long> categories,
@@ -276,8 +255,6 @@ public class EventServiceImpl implements EventService {
                 .getResultList();
 
         if (events.size() == 0) return new ArrayList<>();
-
-        addView(events);
 
         return eventMapper.toLongEventDtos(events);
     }
@@ -349,7 +326,6 @@ public class EventServiceImpl implements EventService {
         }
         if (events.size() == 0) return new ArrayList<>();
 
-        addView(events);
         sendStats(events, request);
         return eventMapper.toLongEventDtos(events);
     }

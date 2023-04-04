@@ -3,20 +3,18 @@ package ru.practicum.event.entity;
 import ru.practicum.category.entity.Category;
 import ru.practicum.event.enums.EventState;
 import ru.practicum.user.entity.User;
-import ru.practicum.utils.Patterns;
 import org.hibernate.Hibernate;
 import lombok.*;
 
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import javax.persistence.*;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
 import static ru.practicum.event.enums.EventState.*;
-import static java.time.format.DateTimeFormatter.*;
 import static javax.persistence.CascadeType.*;
 import static javax.persistence.EnumType.*;
+import static lombok.AccessLevel.*;
 import static java.util.Objects.*;
 
 /**
@@ -27,7 +25,7 @@ import static java.util.Objects.*;
 @Getter
 @Setter
 @Table(name = "events", schema = "public")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = PROTECTED)
 public class Event {
 
     @Id
@@ -82,9 +80,6 @@ public class Event {
 
     @Column(name = "views")
     private Long views;
-
-    @Transient
-    private final DateTimeFormatter dateFormatter = ofPattern(Patterns.DATE_PATTERN);
 
     public Event(Long id,
                  String annotation,

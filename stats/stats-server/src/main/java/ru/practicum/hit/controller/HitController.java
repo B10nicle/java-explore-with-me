@@ -1,12 +1,14 @@
 package ru.practicum.hit.controller;
 
-import ru.practicum.hit.service.HitService;
 import org.springframework.web.bind.annotation.*;
+import ru.practicum.hit.service.HitService;
 import ru.practicum.stats.dto.ViewStatsDto;
 import ru.practicum.stats.dto.HitDto;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
@@ -15,6 +17,7 @@ import static org.springframework.http.HttpStatus.*;
  * @author Oleg Khilko
  */
 
+@Slf4j
 @RestController
 @AllArgsConstructor
 public class HitController {
@@ -22,7 +25,7 @@ public class HitController {
 
     @PostMapping("/hit")
     @ResponseStatus(CREATED)
-    public void saveHit(@RequestBody HitDto hitDto) {
+    public void saveHit(@RequestBody @Valid HitDto hitDto) {
         hitService.saveHit(hitDto);
     }
 

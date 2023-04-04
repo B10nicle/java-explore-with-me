@@ -1,9 +1,9 @@
 package ru.practicum.hit.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import ru.practicum.hit.utils.Patterns;
 import org.hibernate.Hibernate;
 import lombok.*;
-import ru.practicum.hit.utils.Patterns;
 
 import java.time.LocalDateTime;
 import javax.persistence.*;

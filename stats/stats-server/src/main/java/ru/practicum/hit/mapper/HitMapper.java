@@ -1,8 +1,8 @@
 package ru.practicum.hit.mapper;
 
 import ru.practicum.hit.utils.Patterns;
-import ru.practicum.hit.entity.Hit;
 import ru.practicum.stats.dto.HitDto;
+import ru.practicum.hit.entity.Hit;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mapper;
 

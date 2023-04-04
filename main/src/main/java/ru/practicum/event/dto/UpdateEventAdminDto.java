@@ -3,13 +3,13 @@ package ru.practicum.event.dto;
 import ru.practicum.event.enums.StateActionForAdmin;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import ru.practicum.event.entity.Location;
-import ru.practicum.utils.Patterns;
 import lombok.*;
 
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 import static com.fasterxml.jackson.annotation.JsonFormat.Shape.*;
+import static ru.practicum.utils.Patterns.*;
 
 /**
  * @author Oleg Khilko
@@ -31,7 +31,7 @@ public class UpdateEventAdminDto {
     @Size(min = 20, max = 7000)
     private String description;
 
-    @JsonFormat(shape = STRING, pattern = Patterns.DATE_PATTERN)
+    @JsonFormat(shape = STRING, pattern = DATE_PATTERN)
     private LocalDateTime eventDate;
 
     private Location location;

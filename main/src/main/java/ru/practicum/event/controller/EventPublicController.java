@@ -27,8 +27,8 @@ public class EventPublicController {
     @GetMapping
     public List<LongEventDto> getEventsWithParamsByUser(@RequestParam(required = false, defaultValue = "10") Integer size,
                                                         @RequestParam(required = false, defaultValue = "0") Integer from,
+                                                        @RequestParam(defaultValue = "false") boolean onlyAvailable,
                                                         @RequestParam(required = false) List<Long> categories,
-                                                        @RequestParam(required = false) boolean onlyAvailable,
                                                         @RequestParam(required = false) String rangeStart,
                                                         @RequestParam(required = false) String rangeEnd,
                                                         @RequestParam(required = false) SortValue sort,

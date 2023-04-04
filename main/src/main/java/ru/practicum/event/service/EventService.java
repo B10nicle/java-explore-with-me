@@ -2,7 +2,6 @@ package ru.practicum.event.service;
 
 import ru.practicum.event.enums.EventState;
 import ru.practicum.event.enums.SortValue;
-import ru.practicum.event.entity.Event;
 import ru.practicum.event.dto.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,8 +31,6 @@ public interface EventService {
 
     LongEventDto getEvent(Long id,
                           HttpServletRequest request);
-
-    void addView(List<Event> events);
 
     List<LongEventDto> getEventsWithParamsByAdmin(List<Long> users,
                                                   EventState states,

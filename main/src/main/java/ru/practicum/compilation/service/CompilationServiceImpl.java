@@ -9,14 +9,12 @@ import ru.practicum.compilation.dto.SavedCompilationDto;
 import ru.practicum.event.repository.EventRepository;
 import ru.practicum.compilation.dto.CompilationDto;
 import ru.practicum.compilation.entity.Compilation;
-import ru.practicum.event.service.EventService;
 import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.criteria.Predicate;
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -33,7 +31,6 @@ public class CompilationServiceImpl implements CompilationService {
     private final CompilationMapper compilationMapper;
     private final EventRepository eventRepository;
     private final EntityManager entityManager;
-    private final EventService eventService;
 
     @Override
     @Transactional
@@ -47,7 +44,6 @@ public class CompilationServiceImpl implements CompilationService {
                 .build();
 
         var saved = compilationRepository.save(compilation);
-        addView(saved);
         return compilationMapper.mapToCompilationDto(saved);
     }
 
@@ -74,7 +70,6 @@ public class CompilationServiceImpl implements CompilationService {
             old.setTitle(compilationUpdateRequest.getTitle());
 
         var updated = compilationRepository.save(old);
-        addView(updated);
         return compilationMapper.mapToCompilationDto(updated);
     }
 
@@ -110,13 +105,5 @@ public class CompilationServiceImpl implements CompilationService {
                 .getResultList();
 
         return compilationMapper.mapToCompilationDtos(compilations);
-    }
-
-    private void addView(Compilation compilation) {
-        var setEvents = compilation.getEvents();
-        if (!setEvents.isEmpty()) {
-            var events = new ArrayList<>(setEvents);
-            eventService.addView(events);
-        }
     }
 }

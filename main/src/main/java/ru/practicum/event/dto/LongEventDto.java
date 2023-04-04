@@ -5,13 +5,13 @@ import ru.practicum.category.dto.CategoryDto;
 import ru.practicum.event.enums.EventState;
 import ru.practicum.event.entity.Location;
 
-import ru.practicum.utils.Patterns;
 import lombok.*;
 
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 import static com.fasterxml.jackson.annotation.JsonFormat.Shape.*;
+import static ru.practicum.utils.Patterns.*;
 
 /**
  * @author Oleg Khilko
@@ -33,13 +33,13 @@ public class LongEventDto {
 
     private Integer confirmedRequests;
 
-    @JsonFormat(shape = STRING, pattern = Patterns.DATE_PATTERN)
+    @JsonFormat(shape = STRING, pattern = DATE_PATTERN)
     private String createdOn;
 
     @Size(max = 7000)
     private String description;
 
-    @JsonFormat(shape = STRING, pattern = Patterns.DATE_PATTERN)
+    @JsonFormat(shape = STRING, pattern = DATE_PATTERN)
     private LocalDateTime eventDate;
 
     private ShortEventDto initiator;
@@ -50,7 +50,7 @@ public class LongEventDto {
 
     private Long participantLimit;
 
-    @JsonFormat(shape = STRING, pattern = Patterns.DATE_PATTERN)
+    @JsonFormat(shape = STRING, pattern = DATE_PATTERN)
     private LocalDateTime publishedOn;
 
     private Boolean requestModeration;

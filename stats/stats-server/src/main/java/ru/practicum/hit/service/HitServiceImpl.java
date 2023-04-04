@@ -1,17 +1,19 @@
 package ru.practicum.hit.service;
 
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.hit.repository.HitRepository;
+import ru.practicum.hit.repository.StatsRepository;
 import ru.practicum.hit.mapper.ViewStatsMapper;
-import ru.practicum.hit.mapper.HitMapper;
 import org.springframework.stereotype.Service;
 import ru.practicum.stats.dto.ViewStatsDto;
+import ru.practicum.hit.mapper.HitMapper;
 import ru.practicum.stats.dto.HitDto;
 import lombok.extern.slf4j.Slf4j;
 import lombok.AllArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import static java.util.stream.Collectors.*;
 
 /**
  * @author Oleg Khilko
@@ -23,13 +25,13 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class HitServiceImpl implements HitService {
     private final ViewStatsMapper viewStatsMapper;
-    private final HitRepository hitRepository;
+    private final StatsRepository statsRepository;
     private final HitMapper hitMapper;
 
     @Override
     @Transactional
     public void saveHit(HitDto hitDto) {
-        hitRepository.save(hitMapper.toEntity(hitDto));
+        statsRepository.save(hitMapper.toEntity(hitDto));
     }
 
     @Override
@@ -37,8 +39,9 @@ public class HitServiceImpl implements HitService {
                                       LocalDateTime end,
                                       List<String> uris,
                                       boolean unique) {
-        return unique
-                ? viewStatsMapper.toEntities(hitRepository.getDistinctHits(start, end, uris))
-                : viewStatsMapper.toEntities(hitRepository.getHits(start, end, uris));
+        return statsRepository.getStats(start, end, uris, unique)
+                .stream()
+                .map(viewStatsMapper::toDto)
+                .collect(toList());
     }
 }
