@@ -1,4 +1,4 @@
-package ru.practicum.server.hit.utils;
+package ru.practicum.hit.utils;
 
 /**
  * @author Oleg Khilko

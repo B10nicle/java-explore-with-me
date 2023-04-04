@@ -1,9 +1,9 @@
-package ru.practicum.server.hit.service;
+package ru.practicum.hit.service;
 
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.server.hit.repository.HitRepository;
-import ru.practicum.server.hit.mapper.ViewStatsMapper;
-import ru.practicum.server.hit.mapper.HitMapper;
+import ru.practicum.hit.repository.HitRepository;
+import ru.practicum.hit.mapper.ViewStatsMapper;
+import ru.practicum.hit.mapper.HitMapper;
 import org.springframework.stereotype.Service;
 import ru.practicum.stats.dto.ViewStatsDto;
 import ru.practicum.stats.dto.HitDto;

@@ -1,14 +1,14 @@
-package ru.practicum.server.hit.entity;
+package ru.practicum.hit.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.hibernate.Hibernate;
 import lombok.*;
+import ru.practicum.hit.utils.Patterns;
 
 import java.time.LocalDateTime;
 import javax.persistence.*;
 import java.util.Objects;
 
-import static ru.practicum.server.hit.utils.Patterns.*;
 import static javax.persistence.GenerationType.*;
 
 /**
@@ -32,7 +32,7 @@ public class Hit {
     private String app;
     private String ip;
 
-    @DateTimeFormat(pattern = DATE_PATTERN)
+    @DateTimeFormat(pattern = Patterns.DATE_PATTERN)
     @Column(name = "timestamp")
     private LocalDateTime timestamp;
 

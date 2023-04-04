@@ -1,11 +1,10 @@
-package ru.practicum.server.hit.mapper;
+package ru.practicum.hit.mapper;
 
-import ru.practicum.server.hit.entity.Hit;
+import ru.practicum.hit.utils.Patterns;
+import ru.practicum.hit.entity.Hit;
 import ru.practicum.stats.dto.HitDto;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mapper;
-
-import static ru.practicum.server.hit.utils.Patterns.*;
 
 /**
  * @author Oleg Khilko
@@ -13,6 +12,6 @@ import static ru.practicum.server.hit.utils.Patterns.*;
 
 @Mapper(componentModel = "spring")
 public interface HitMapper {
-    @Mapping(target = "timestamp", source = "timestamp", dateFormat = DATE_PATTERN)
+    @Mapping(target = "timestamp", source = "timestamp", dateFormat = Patterns.DATE_PATTERN)
     Hit toEntity(HitDto hitDto);
 }

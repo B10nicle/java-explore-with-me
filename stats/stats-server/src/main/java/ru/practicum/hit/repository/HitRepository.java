@@ -1,9 +1,9 @@
-package ru.practicum.server.hit.repository;
+package ru.practicum.hit.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import ru.practicum.server.hit.entity.ViewStats;
-import ru.practicum.server.hit.entity.Hit;
+import ru.practicum.hit.entity.ViewStats;
+import ru.practicum.hit.entity.Hit;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public interface HitRepository extends JpaRepository<Hit, Long> {
     @Query(value = ""
-            + "SELECT NEW ru.practicum.server.hit.entity.ViewStats(hit.uri, hit.app, COUNT(hit.ip)) "
+            + "SELECT NEW ru.practicum.hit.entity.ViewStats(hit.uri, hit.app, COUNT(hit.ip)) "
             + "FROM Hit hit "
             + "WHERE hit.uri IN ?3 AND hit.timestamp BETWEEN ?1 AND ?2 "
             + "GROUP BY hit.uri, hit.app "
@@ -24,7 +24,7 @@ public interface HitRepository extends JpaRepository<Hit, Long> {
                             List<String> uris);
 
     @Query(value = ""
-            + "SELECT NEW ru.practicum.server.hit.entity.ViewStats(hit.uri, hit.app, COUNT(DISTINCT hit.ip)) "
+            + "SELECT NEW ru.practicum.hit.entity.ViewStats(hit.uri, hit.app, COUNT(DISTINCT hit.ip)) "
             + "FROM Hit hit "
             + "WHERE hit.uri IN ?3 AND hit.timestamp BETWEEN ?1 AND ?2 "
             + "GROUP BY hit.uri, hit.app "

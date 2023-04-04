@@ -1,6 +1,6 @@
-package ru.practicum.server.hit.controller;
+package ru.practicum.hit.controller;
 
-import ru.practicum.server.hit.service.HitService;
+import ru.practicum.hit.service.HitService;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.stats.dto.ViewStatsDto;
 import ru.practicum.stats.dto.HitDto;
