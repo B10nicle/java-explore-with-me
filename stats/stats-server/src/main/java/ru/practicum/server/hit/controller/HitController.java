@@ -29,7 +29,7 @@ public class HitController {
     @GetMapping("/stats")
     public List<ViewStatsDto> getStats(@RequestParam LocalDateTime start,
                                        @RequestParam LocalDateTime end,
-                                       @RequestParam(required = false) boolean unique,
+                                       @RequestParam(defaultValue = "false") boolean unique,
                                        @RequestParam(required = false) List<String> uris) {
         return hitService.getHits(start, end, uris, unique);
     }

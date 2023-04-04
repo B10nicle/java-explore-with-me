@@ -1,4 +1,4 @@
-package ru.practicum.server;
+package ru.practicum;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.SpringApplication;
@@ -8,8 +8,8 @@ import org.springframework.boot.SpringApplication;
  */
 
 @SpringBootApplication
-public class StatsServerApp {
+public class MainServerApp {
     public static void main(String[] args) {
-        SpringApplication.run(StatsServerApp.class, args);
+        SpringApplication.run(MainServerApp.class, args);
     }
 }
