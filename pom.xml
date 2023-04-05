@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<modules>
 		<module>stats</module>
-		<module>main</module>
-	</modules>
+		<module>ewm</module>
+    </modules>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
