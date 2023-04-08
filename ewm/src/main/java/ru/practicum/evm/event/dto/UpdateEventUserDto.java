@@ -1,7 +1,7 @@
 package ru.practicum.evm.event.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import ru.practicum.evm.event.enums.StateActionForUser;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import ru.practicum.evm.event.entity.Location;
 import lombok.*;
 
@@ -10,6 +10,10 @@ import java.time.LocalDateTime;
 
 import static com.fasterxml.jackson.annotation.JsonFormat.Shape.*;
 import static ru.practicum.evm.utils.Patterns.*;
+
+/**
+ * @author Oleg Khilko
+ */
 
 @Getter
 @Setter

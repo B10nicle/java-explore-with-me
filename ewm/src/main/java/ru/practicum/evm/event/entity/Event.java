@@ -24,6 +24,7 @@ import static java.util.Objects.*;
 @Entity
 @Getter
 @Setter
+@ToString
 @Table(name = "events", schema = "public")
 @NoArgsConstructor(access = PROTECTED)
 public class Event {
