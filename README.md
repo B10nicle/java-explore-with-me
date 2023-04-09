@@ -1,7 +1,5 @@
 ## Яндекс Практикум: проект "Explore With Me"
 
-Сcылка на pull request: https://github.com/B10nicle/java-explore-with-me/pull/3
-
 Технологии: Java + Spring Boot + Maven + Lombok + JUnit + RESTful API + PostgreSQL + Docker
 
 Описание: проект, позволяющий пользователям делиться информацией об интересных событиях и находить компанию для участия в них. 
