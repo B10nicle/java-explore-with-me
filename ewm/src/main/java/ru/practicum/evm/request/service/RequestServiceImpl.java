@@ -27,6 +27,10 @@ import java.util.List;
 import static java.util.stream.Collectors.*;
 import static java.time.LocalDateTime.*;
 
+/**
+ * @author Oleg Khilko
+ */
+
 @Service
 @AllArgsConstructor
 @Transactional(readOnly = true)

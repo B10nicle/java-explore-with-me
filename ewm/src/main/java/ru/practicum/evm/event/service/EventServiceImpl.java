@@ -7,19 +7,19 @@ import ru.practicum.evm.event.exception.EventWrongTimeException;
 import ru.practicum.evm.category.repository.CategoryRepository;
 import ru.practicum.evm.event.exception.EventNotExistException;
 import ru.practicum.evm.event.exception.EventCanceledException;
-import ru.practicum.evm.event.dto.*;
-import ru.practicum.evm.event.repository.EventRepository;
 import ru.practicum.evm.user.exception.UserNotExistException;
+import ru.practicum.evm.event.repository.EventRepository;
 import ru.practicum.evm.user.repository.UserRepository;
-import ru.practicum.evm.utils.Patterns;
-import org.springframework.stereotype.Service;
 import ru.practicum.evm.event.mapper.EventMapper;
-import ru.practicum.stats.client.StatsClient;
 import ru.practicum.evm.event.enums.EventState;
-import ru.practicum.stats.dto.ViewStatsDto;
 import ru.practicum.evm.event.enums.SortValue;
+import org.springframework.stereotype.Service;
+import ru.practicum.stats.client.StatsClient;
+import ru.practicum.stats.dto.ViewStatsDto;
 import ru.practicum.evm.event.entity.Event;
+import ru.practicum.evm.utils.Patterns;
 import ru.practicum.stats.dto.HitDto;
+import ru.practicum.evm.event.dto.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,11 +33,15 @@ import static ru.practicum.evm.event.enums.StateActionForAdmin.*;
 import static ru.practicum.evm.event.enums.StateActionForUser.*;
 import static org.springframework.data.domain.PageRequest.*;
 import static ru.practicum.evm.event.enums.EventState.*;
-import static java.time.format.DateTimeFormatter.*;
 import static ru.practicum.evm.event.enums.SortValue.*;
+import static java.time.format.DateTimeFormatter.*;
 import static java.util.stream.Collectors.*;
 import static java.time.LocalDateTime.*;
 import static java.util.Comparator.*;
+
+/**
+ * @author Oleg Khilko
+ */
 
 @Slf4j
 @Service
